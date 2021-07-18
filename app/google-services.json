@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160987949785",
+    "project_id": "sabuskitchen-f6522",
+    "storage_bucket": "sabuskitchen-f6522.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160987949785:android:7efd09b136a7fa89126cc8",
+        "android_client_info": {
+          "package_name": "com.example.sabuskitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160987949785-18egdiag2k4hi32da1a88impefdbjs0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4GB2uz64hG2Gl6W_YSr2Qv1waAkMtaVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160987949785-18egdiag2k4hi32da1a88impefdbjs0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

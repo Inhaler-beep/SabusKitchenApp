@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DuesActivity">
+
+    <LinearLayout
+        android:id="@+id/due_oru_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due Payments"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:layout_margin="20dp"
+            android:textSize="19sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/empty_flag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Nothing to show here"
+        android:gravity="center"
+        android:layout_below="@+id/due_oru_layout"
+        android:layout_centerInParent="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/due_recyclerView"
+        android:layout_below="@+id/due_oru_layout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>
