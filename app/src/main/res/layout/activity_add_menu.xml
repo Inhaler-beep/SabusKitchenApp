@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BEFFFFFF"
+    tools:context=".AddMenu">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:elevation="8dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/dish_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:hint="Enter dish name"
+            android:padding="9dp" />
+
+        <EditText
+            android:id="@+id/menu_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/dish_name"
+            android:background="@drawable/round_border"
+            android:padding="9dp"
+            android:hint="Enter menu count" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/menu_count"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_border"
+            android:hint="Enter the Price"
+            android:padding="9dp"
+            android:id="@+id/dish_price"/>
+
+        <AutoCompleteTextView
+
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dish_price"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_border"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Category"
+            android:labelFor="@id/autoCompleteTextView"
+            android:maxLines="1"
+            android:padding="9dp"
+            android:singleLine="true"
+            android:text="">
+
+
+        </AutoCompleteTextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_menu"
+            android:textColor="@color/white"
+            android:elevation="6dp"
+            android:background="@drawable/round_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Add Menu" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

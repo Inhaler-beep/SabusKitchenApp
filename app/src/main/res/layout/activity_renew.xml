@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/ad1_top_linear"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Renew Customer"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ad1_mid_linear"
+            android:layout_below="@id/ad1_top_linear"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:src="@drawable/ic_follow"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1"
+                android:layout_margin="20dp"/>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            android:layout_below="@id/ad1_mid_linear"
+            android:gravity="center"
+            >
+
+
+            <EditText
+                android:id="@+id/RnameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/round_border"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textCapWords"
+                android:padding="9dp" />
+
+
+
+
+            <AutoCompleteTextView
+
+                android:id="@+id/RautoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView"
+                android:hint="Hostel Name"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_bhome"
+                android:layout_marginTop="10dp"
+                android:padding="9dp"
+                android:ems="10"
+                android:text="">
+
+
+            </AutoCompleteTextView>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+
+                android:layout_gravity="center"
+                android:background="@drawable/ellipse_border"
+                >
+
+                <RadioGroup
+                    android:id="@+id/rRadioHroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+
+                    >
+                    <RadioButton
+                        android:id="@+id/rtendays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 days"
+                        android:textSize="9sp"
+                        android:padding="5dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rfifteendays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:text="15 days"
+                        android:padding="5dp"/>
+                    <RadioButton
+                        android:id="@+id/rtwentydays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:text="20 days"
+                        android:padding="5dp"/>
+                    <RadioButton
+                        android:id="@+id/rthirtydays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:text="30 days"
+                        android:padding="5dp"/>
+                </RadioGroup>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount to be paid : "
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/ramount_text"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Rs. 1200"
+
+
+
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/rdateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/round_border"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawablePadding="10dp"
+                    android:onClick="editdatebutton"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:ems="10"
+                    android:hint="Joining Date"
+                    android:inputType="textEmailAddress"
+                    android:padding="9dp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/rsubmit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:text="Add"
+                android:padding="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat"
+                android:layout_margin="30dp"/>
+
+
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#37FBFBFB"
+    tools:context=".HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:id="@+id/topLayout"
+            android:background="@drawable/homebg">
+
+           <ImageButton
+               android:id="@+id/logout_button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="end"
+               android:padding="10dp"
+               android:clickable="true"
+               android:foreground="?attr/selectableItemBackground"
+               android:background="@drawable/roundcorner"
+               android:layout_margin="10dp"
+               android:src="@drawable/ic_lock"
+               />
+
+
+            <TextView
+                android:id="@+id/Dashboard_View"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/dashboard_textborder"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="MegaBITE"
+                android:textColor="@color/colorPrimaryVariant"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Dashboard_dashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:text="Dashboard"
+
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+
+        <View
+            android:id="@+id/view_under_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/topLayout"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"/>
+
+        <LinearLayout
+            android:id="@+id/grid_layout_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_under_horizontal"
+            >
+            <GridLayout
+                android:id="@+id/grid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:padding="10dp"
+                android:columnCount="2"
+                android:rowCount="3">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mess_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="78dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_healthy_eating" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:textStyle="bold"
+                            android:text="Mess"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/add_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_follow"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Add New"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/payment_cardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_debit_card"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Payments"
+                            android:textStyle="bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dueCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_due_date"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Dues"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/add_menu_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_follow"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Add New"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/menu_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    app:cardElevation="6dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_follow"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#DADADA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Menu"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+            </GridLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</ScrollView>

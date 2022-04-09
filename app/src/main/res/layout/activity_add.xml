@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:id="@+id/ad_top_linear"
+           android:layout_height="wrap_content"
+           android:background="@color/colorPrimary"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_margin="20dp"
+               android:fontFamily="@font/montserrat"
+               android:text="Add Customer"
+               android:textColor="@color/white"
+               android:textSize="20sp" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/ad_mid_linear"
+           android:layout_below="@id/ad_top_linear"
+           android:gravity="center"
+           android:orientation="vertical"
+           >
+
+           <ImageView
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:layout_marginTop="20dp"
+               android:src="@drawable/ic_follow"
+
+               />
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="#E1E1E1"
+               android:layout_margin="20dp"/>
+
+
+
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/ad_mid_linear"
+           android:layout_marginStart="20dp"
+           android:layout_marginTop="20dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="20dp"
+           android:gravity="center"
+           android:orientation="vertical">
+
+
+           <EditText
+               android:id="@+id/nameInput"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+
+               android:background="@drawable/round_border"
+               android:drawableStart="@drawable/ic_person"
+               android:drawablePadding="10dp"
+               android:ems="10"
+               android:hint="Name"
+               android:inputType="textCapWords"
+               android:padding="9dp" />
+
+
+           <AutoCompleteTextView
+
+               android:id="@+id/autoCompleteTextView"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/textView"
+               android:layout_alignParentLeft="true"
+               android:layout_marginTop="10dp"
+               android:background="@drawable/round_border"
+               android:drawableLeft="@drawable/ic_bhome"
+               android:drawablePadding="10dp"
+               android:ems="10"
+               android:hint="Hostel Name"
+               android:maxLines="1"
+               android:padding="9dp"
+               android:singleLine="true"
+               android:text="">
+
+
+           </AutoCompleteTextView>
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="10dp"
+
+               android:background="@drawable/ellipse_border"
+               android:orientation="vertical">
+
+               <RadioGroup
+                   android:id="@+id/RadioHroup"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:orientation="horizontal"
+
+                   >
+
+                   <RadioButton
+                       android:id="@+id/tendays"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="10 days"
+                       android:textSize="9sp" />
+
+                   <RadioButton
+                       android:id="@+id/fifteendays"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="15 days"
+                       android:textSize="9sp" />
+
+                   <RadioButton
+                       android:id="@+id/twentydays"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="20 days"
+                       android:textSize="9sp" />
+
+                   <RadioButton
+                       android:id="@+id/thirtydays"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="30 days"
+                       android:textSize="9sp" />
+               </RadioGroup>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="3dp"
+                   android:layout_marginBottom="10dp"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Amount to be paid : "
+                       android:textSize="12sp"
+
+
+                       />
+
+                   <TextView
+                       android:id="@+id/amount_text"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Rs. 1200"
+                       android:textSize="12sp"
+                       android:textStyle="bold"
+
+
+                       />
+
+
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/payment_linear"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="10dp"
+
+               android:background="@drawable/ellipse_border"
+               android:orientation="vertical">
+
+
+               <RadioGroup
+                   android:id="@+id/RadioGroup"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:orientation="horizontal"
+
+                   >
+
+                   <RadioButton
+                       android:id="@+id/googlepay"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="Google Pay"
+                       android:textSize="12sp" />
+
+                   <RadioButton
+                       android:id="@+id/cashpayment"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="Cash "
+                       android:textSize="12sp" />
+
+                   <RadioButton
+                       android:id="@+id/pay_later"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="5dp"
+                       android:text="Pay Later"
+                       android:textSize="12sp" />
+
+               </RadioGroup>
+
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:orientation="horizontal">
+
+
+               <EditText
+                   android:id="@+id/dateInput"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:background="@drawable/round_border"
+                   android:cursorVisible="false"
+                   android:drawableStart="@drawable/ic_date"
+                   android:drawablePadding="10dp"
+                   android:ems="10"
+                   android:focusable="false"
+                   android:focusableInTouchMode="false"
+                   android:hint="Joining Date"
+                   android:inputType="textEmailAddress"
+                   android:onClick="editdatebutton"
+                   android:padding="9dp" />
+
+
+           </LinearLayout>
+
+           <Button
+               android:id="@+id/submit_button"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="30dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:background="@drawable/round_button"
+               android:fontFamily="@font/montserrat"
+               android:padding="9dp"
+               android:text="Add"
+               android:textColor="@color/white" />
+
+
+       </LinearLayout>
+
+   </RelativeLayout>
+
+</ScrollView>

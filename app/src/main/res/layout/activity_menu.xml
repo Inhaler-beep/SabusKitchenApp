@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <LinearLayout
+        android:id="@+id/menu_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <EditText
+            android:id="@+id/menuInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:drawableLeft="@drawable/ic_person_search"
+            android:drawablePadding="10dp"
+            android:background="@drawable/round_search"
+            android:fontFamily="@font/montserrat"
+            android:hint="Enter Name"
+            android:backgroundTint="@color/colorPrimaryVariant"
+            android:inputType="textCapWords"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menu_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@+id/menu_linearLayout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/place_order_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#2AC525"
+        android:backgroundTint="#2AC525"
+        android:elevation="3dp"
+        android:gravity="end"
+        android:padding="3dp">
+
+        <Button
+            android:id="@+id/place_order_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_logout"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:fontFamily="@font/montserrat"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="1dp"
+            android:text="Place Order"
+            android:textColor="#2AC525"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</RelativeLayout>
