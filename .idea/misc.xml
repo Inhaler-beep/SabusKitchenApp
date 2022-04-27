@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Flutter SDk/android-sdk/platforms/android-29/data/res/layout/simple_list_item_1.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_border.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_border_red.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_button.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_logout.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_add.xml" value="0.14855072463768115" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_add_menu.xml" value="0.25" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_chef.xml" value="0.25" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_chef_detail.xml" value="0.264" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_code.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_home.xml" value="0.1503623188405797" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_login.xml" value="0.1503623188405797" />
@@ -18,12 +21,11 @@
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_usermess.xml" value="0.14266304347826086" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/list_view.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/menu_layout.xml" value="0.152" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/order_detail_single.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/orders_layout.xml" value="0.536" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/userlayout.xml" value="0.14673913043478262" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/list_view.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private CardView MessCardView,AddCardView,DueCardView,PaymentCardView,AddMenu,Menucard;
+    private CardView MessCardView,AddCardView,DueCardView,PaymentCardView,AddMenu,Menucard,OrdersCard;
     private ImageButton LogoutButton;
     private FirebaseAuth mAuth;
 
@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         PaymentCardView = (CardView) findViewById(R.id.payment_cardView);
         AddMenu = (CardView) findViewById(R.id.add_menu_card);
         Menucard = (CardView) findViewById(R.id.menu_card);
+        OrdersCard = (CardView) findViewById(R.id.current_orders);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -87,6 +88,13 @@ public class HomeActivity extends AppCompatActivity {
                 Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
                 finish();
+            }
+        });
+        OrdersCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(HomeActivity.this, ChefActivity.class);
+                startActivity(loginIntent);
             }
         });
 

@@ -50,6 +50,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -102,8 +103,9 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
             @Override
             public void onClick(View v) {
                 int totalamount=0;
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-                uniqueID = UUID.randomUUID().toString();
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(System.currentTimeMillis());
+                String time = formatter.format(date);                uniqueID = UUID.randomUUID().toString();
                 for (Map.Entry mapElement : prices.entrySet()) {
                     String key = (String)mapElement.getKey();
                     Integer value = ((Integer)mapElement.getValue());
@@ -113,7 +115,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                 }
 
                orderDetails.put("totalamount",Integer.toString(totalamount));
-                orderDetails.put("date",timeStamp);
+                orderDetails.put("date",time);
                 orderDetails.put("status","Ordered");
 
 
@@ -323,21 +325,6 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                     }
                 };
 
-      /*  FirebaseRecyclerAdapter<Menu, MenuActivity.UserViewHolder> adapter1 =
-                new FirebaseRecyclerAdapter<Menu, MenuActivity.UserViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull MessActivity.UserViewHolder holder, int position, @NonNull Users model)
-                    {
-
-
-                    }
-
-                    @NonNull
-                    @Override
-                    public MessActivity.UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                    }
-                };*/
 
 
         recyclerView.setAdapter(adapter);
@@ -430,15 +417,13 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
         }
     }
 
-    /**
-     * The name of the function has to be
-     * onPaymentSuccess
-     * Wrap your code in try catch, as shown, to ensure that this method runs correctly
-     */
+
     @SuppressWarnings("unused")
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
+            orderDetails.put("paymentid",razorpayPaymentID);
+            OrdersRef.child(uniqueID).child("details").setValue(orderDetails);
             Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
             Intent orderplacedintent = new Intent(MenuActivity.this, OrderActivity.class);
             Toast.makeText(MenuActivity.this, "unique id"+uniqueID, Toast.LENGTH_LONG).show();
@@ -450,11 +435,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
         }
     }
 
-    /**
-     * The name of the function has to be
-     * onPaymentError
-     * Wrap your code in try catch, as shown, to ensure that this method runs correctly
-     */
+
     @SuppressWarnings("unused")
     @Override
     public void onPaymentError(int code, String response) {

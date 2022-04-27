@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sabuskitchen">
         <activity
+            android:name=".ChefDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChefActivity"
+            android:exported="true" />
+        <activity
             android:name=".PreOrderActivity"
             android:exported="true" />
         <activity
