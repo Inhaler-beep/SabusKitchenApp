@@ -44,12 +44,12 @@
         android:id="@+id/sabuslogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/logosabus"
         android:layout_below="@+id/view1"
-        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerInside"
 
-        android:scaleType="centerInside"/>
+        android:src="@drawable/logosabus" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

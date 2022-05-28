@@ -91,7 +91,8 @@ public class OrderActivity extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent menuIntent = new Intent(OrderActivity.this,ChefActivity.class);
+                Intent menuIntent = new Intent(OrderActivity.this,TableActivity.class);
+                menuIntent.putExtra("uniqueid",uniqueid);
                 startActivity(menuIntent);
                 finish();
             }

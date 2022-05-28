@@ -66,7 +66,6 @@ public class DuesActivity extends AppCompatActivity
     private void CheckForEmptyFlag()
     {
         adaptercount = recyclerView.getChildCount();
-        Toast.makeText(this, "count is "+adaptercount, Toast.LENGTH_SHORT).show();
         if(adaptercount == 0)
         {
             EmptyFlag.setVisibility(View.VISIBLE);

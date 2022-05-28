@@ -29,6 +29,16 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="12sp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expired"
+            android:id="@+id/expiry_checkbox"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/round_logout"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
 
 
     </LinearLayout>

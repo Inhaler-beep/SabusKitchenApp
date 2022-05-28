@@ -19,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -55,10 +56,10 @@ public class PaymentActivity extends AppCompatActivity {
 
     private void LoadUserData()
     {
-
+        Query query = UsersRef.orderByChild("name");
         FirebaseRecyclerOptions<Payments> options =
                 new FirebaseRecyclerOptions.Builder<Payments>()
-                .setQuery(UsersRef,Payments.class)
+                .setQuery(query,Payments.class)
                 .build();
 
         FirebaseRecyclerAdapter<Payments,UserViewHolder2> adapter =

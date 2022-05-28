@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -13,6 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +34,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
@@ -41,13 +46,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
-public class AddActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class AddActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, PaymentResultListener {
 
     private ProgressDialog mLoadingBar;
-    private String expiry;
+    private String expiry,amount;
     private EditText dateInput,nameInput;
-    private String mode,payment_mode;
+    private String mode,payment_mode,uniqueID,name,hostelname,date;
     private TextView amountText;
     private Integer count = 1;
     private AutoCompleteTextView actv;
@@ -61,12 +67,14 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
     private FirebaseDatabase payments = FirebaseDatabase.getInstance();
     private DatabaseReference payment = payments.getReference().child("Payments");
     
-    String[] fruits = {"St. Joseph's Hostel", "St. George Hostel", "St. Chavara Hostel", "St. Paul's Hostel", "Kristu Jayanti College", "Outsiders", "St. Aloysious Hostel"};
+    String[] fruits = {""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        Checkout.preload(getApplicationContext());
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, fruits);
@@ -100,6 +108,7 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                         mode = "10";
                         days = 10;
                         amountText.setText("Rs. 1200");
+                        amount = "1200";
                         dateInput.setText("");
 
                         break;
@@ -107,6 +116,7 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                         mode = "20";
                         days = 20;
                         amountText.setText("Rs. 2400");
+                        amount="2400";
                         dateInput.setText("");
 
                         break;
@@ -114,6 +124,7 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                         mode = "30";
                         days = 30;
                         amountText.setText("Rs. 3600");
+                        amount="3600";
                         dateInput.setText("");
                         break;
 
@@ -121,6 +132,7 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                         mode = "15";
                         days = 15;
                         amountText.setText("Rs. 1800");
+                        amount="1800";
                         dateInput.setText("");
                         break;
 
@@ -197,9 +209,10 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
 
     private void validateUserData()
     {
-        String name = nameInput.getText().toString();
-        String date = dateInput.getText().toString();
-        String hostelname = actv.getText().toString();
+        uniqueID = UUID.randomUUID().toString();
+        name = nameInput.getText().toString();
+        date = dateInput.getText().toString();
+        hostelname = actv.getText().toString();
 
 
         if(name.isEmpty())
@@ -252,16 +265,18 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                 });
             }
 
-            
-            dr.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            dr.child(uniqueID).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) 
                 {
                     if(task.isSuccessful())
                     {
+
                         if(!payment_mode.equals("PayLater"))
                         {
-                            payment.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                            payment.child(uniqueID).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful())
@@ -272,7 +287,15 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
                                 }
                             });
 
+
                         }
+                        if(payment_mode.equals("GooglePay"))
+                        {
+                            startPayment(amount);
+                        }
+
+
+
 
                         Toast.makeText(AddActivity.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                         mLoadingBar.dismiss();
@@ -355,4 +378,89 @@ public class AddActivity extends AppCompatActivity implements DatePickerDialog.O
        
 
     }
+
+    public void startPayment(String amount) {
+        /*
+          You need to pass current activity in order to let Razorpay create CheckoutActivity
+         */
+        final Activity activity = this;
+
+        final Checkout co = new Checkout();
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", "Razorpay Corp");
+            options.put("description", "Demoing Charges");
+            options.put("send_sms_hash",true);
+            options.put("allow_rotation", true);
+            //You can omit the image option to fetch the image from dashboard
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            options.put("currency", "INR");
+            options.put("amount", amount+"00");
+
+            JSONObject preFill = new JSONObject();
+            preFill.put("email", "megabite@gmail.com");
+            preFill.put("contact", "973734734");
+
+            options.put("prefill", preFill);
+
+            co.open(activity, options);
+        } catch (Exception e) {
+            Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+            e.printStackTrace();
+        }
+    }
+
+
+    @SuppressWarnings("unused")
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID) {
+        try {
+            HashMap<String,String> userMap = new HashMap<>();
+            userMap.put("name",name);
+            userMap.put("phone",hostelname);
+            userMap.put("date",date);
+            userMap.put("mode",mode);
+            userMap.put("expiry",expiry);
+            userMap.put("paymentmode","UPI");
+            payment.child(uniqueID).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(AddActivity.this, "Payment Added", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+            Toast.makeText(this, "Payment Success", Toast.LENGTH_SHORT).show();
+
+
+        } catch (Exception e) {
+            Log.e("TAG", "Exception in onPaymentSuccess", e);
+        }
+    }
+
+
+    @SuppressWarnings("unused")
+    @Override
+    public void onPaymentError(int code, String response) {
+    Toast.makeText(this, "Payment Failed"+response, Toast.LENGTH_LONG).show();
+        try {
+             payment.child(uniqueID).removeValue();
+            HashMap<String,String> userMap = new HashMap<>();
+            userMap.put("name",name);
+            userMap.put("phone",hostelname);
+            userMap.put("date",date);
+            userMap.put("mode",mode);
+            userMap.put("expiry",expiry);
+            userMap.put("paymentmode","UPI");
+             dues.child(uniqueID).setValue(userMap);
+
+        } catch (Exception e) {
+            Log.e("TAG", "Exception in onPaymentError", e);
+        }
+    }
+
 }

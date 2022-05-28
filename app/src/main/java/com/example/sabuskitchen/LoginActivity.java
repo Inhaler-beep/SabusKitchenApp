@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton = (Button) findViewById(R.id.loginButton);
         progressBar = (ProgressBar) findViewById(R.id.progessingbar);
        progressBar.setVisibility(View.INVISIBLE);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -81,5 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

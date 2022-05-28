@@ -2,7 +2,7 @@ package com.example.sabuskitchen.Models;
 
 public class Users {
     String name;
-    String phone;
+    String phone,expiry;
 
     public Users()
     {
@@ -13,6 +13,7 @@ public class Users {
         return "Users{" +
                 "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", expiry='" + expiry + '\'' +
                 '}';
     }
 
@@ -31,5 +32,13 @@ public class Users {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getExpiry() {
+        return expiry;
+    }
+
+    public void setExpiry(String expiry) {
+        this.expiry = expiry;
     }
 }

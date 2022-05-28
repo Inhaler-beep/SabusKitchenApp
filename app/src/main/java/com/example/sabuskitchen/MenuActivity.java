@@ -31,6 +31,8 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.api.Distribution;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +54,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -65,6 +68,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
     private ArrayList<Map.Entry<String, String> > listOfEntry;
     private DatabaseReference MenuRef,OrdersRef;
     private EditText userInput;
+    private FirebaseAuth mAuth;
     private TextView orderQuantity;
     private ProgressDialog progressDialog;
     private ArrayList<String> ordereditem;
@@ -72,6 +76,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
     private int finalamount=0;
     HashMap<String,Integer> orderMap = new HashMap<>();
     HashMap<String,String> orderDetails = new HashMap<>();
+    HashMap<String,Integer> countMap = new HashMap<>();
     String uniqueID;
     HashMap<String,Integer> prices = new HashMap<>();
 
@@ -83,6 +88,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
         setContentView(R.layout.activity_menu);
         Checkout.preload(getApplicationContext());
 
+        mAuth = FirebaseAuth.getInstance();
         MenuRef = FirebaseDatabase.getInstance().getReference().child("Menu");
         OrdersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         MenuRef.keepSynced(true);
@@ -113,11 +119,18 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
 
 
                 }
-
+                FirebaseUser user = mAuth.getCurrentUser();
+                String empuser = user.getUid();
                orderDetails.put("totalamount",Integer.toString(totalamount));
                 orderDetails.put("date",time);
                 orderDetails.put("status","Ordered");
-
+                orderDetails.put("empid",empuser);
+                for (Map.Entry mapElement : countMap.entrySet()) {
+                    String key1 = (String)mapElement.getKey();
+                    Integer value = ((Integer)mapElement.getValue());
+                    Integer revisedcount = value - Integer.parseInt(orderMap.get(key1).toString());
+                    MenuRef.child(key1).child("count").setValue(revisedcount.toString());
+                }
 
 
                 OrdersRef.child(uniqueID).child("Items").setValue(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -187,7 +200,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
 
     private void LoadUserData(String data)
     {
-
+        
         Query query = MenuRef.orderByChild("dishname").startAt(data).endAt(data+"\uf8ff");
 
         FirebaseRecyclerOptions<Menu> options =
@@ -206,6 +219,24 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                         ordereditem  = new ArrayList<>();
 
                         final String key = getRef(position).getKey();
+                        MenuRef.child(key).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Integer count =  Integer.parseInt(snapshot.child("count").getValue().toString());
+                                if(count<=0)
+                                {
+                                    holder.dishname.setText(model.getDishname()+" ( Out of Stock )");
+
+                                    holder.additem.setEnabled(false);
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                         holder.dishname.setText(model.getDishname());
                         holder.price.setText(model.getPrice());
                         progressDialog.dismiss();
@@ -230,10 +261,16 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                                 String revised_quantity = Integer.toString(quantity);
                                 holder.quantity.setText(revised_quantity);
                                 orderMap.put(key,quantity);
+                                countMap.put(key,Integer.parseInt(model.getCount().toString()));
                                 int price = parseInt(model.getPrice());
                                 price = price * quantity;
                                 String revised_price = Integer.toString(price);
                                 holder.price.setText(revised_price);
+                                if(Integer.parseInt(revised_quantity)<1)
+                                {
+                                    holder.quantity.setText("1");
+                                    holder.price.setText(model.getPrice());
+                                }
                                 if(prices.containsKey(key))
                                 {
                                     prices.remove(key);
@@ -256,10 +293,17 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                                 String revised_quantity = Integer.toString(quantity);
                                 holder.quantity.setText(revised_quantity);
                                 orderMap.put(key,quantity);
+                                countMap.put(key,Integer.parseInt(model.getCount().toString()));
                                 int price = parseInt(model.getPrice());
                                 price = price * quantity;
                                 String revised_price = Integer.toString(price);
                                 holder.price.setText(revised_price);
+                                if(Integer.parseInt(revised_quantity)<1)
+                                {
+                                    holder.quantity.setText("1");
+                                    holder.price.setText(model.getPrice());
+
+                                }
                                 if(prices.containsKey(key))
                                 {
                                     prices.remove(key);
@@ -284,6 +328,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                                 holder.orderminus.setVisibility(View.VISIBLE);
                                 holder.quantity.setVisibility(View.VISIBLE);
                                 orderMap.put(key, parseInt(holder.quantity.getText().toString()));
+                                countMap.put(key,Integer.parseInt(model.getCount().toString()));
                                 ordereditem.add(key);
                                 updatePlaceOrderCard(ordereditem.size());
                                 if(prices.containsKey(key))
@@ -307,6 +352,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
                                 holder.orderplus.setVisibility(View.GONE);
                                 ordereditem.remove(key);
                                 orderMap.remove(key);
+                                countMap.remove(key);
                                 prices.remove(key);
                                 updatePlaceOrderCard(ordereditem.size());
 
@@ -405,7 +451,7 @@ public class MenuActivity extends AppCompatActivity implements PaymentResultList
 
             JSONObject preFill = new JSONObject();
             preFill.put("email", "megabite@gmail.com");
-            preFill.put("contact", "973734734");
+            preFill.put("contact", "919961050015");
 
             options.put("prefill", preFill);
 

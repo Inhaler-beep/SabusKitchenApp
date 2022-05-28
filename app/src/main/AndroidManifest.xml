@@ -12,10 +12,25 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logosabus"
-        android:label="Sabu&apos;s Kitchen"
+        android:label="MegaBite"
         android:roundIcon="@drawable/logosabus"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sabuskitchen">
+        <activity
+            android:name=".TableActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddEmpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UpiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CompletedOrders"
+            android:exported="true" />
+        <activity
+            android:name=".LandingActivity"
+            android:exported="true" />
         <activity
             android:name=".ChefDetailActivity"
             android:exported="true" />
@@ -30,7 +45,8 @@
             android:exported="true" />
         <activity
             android:name=".AddMenu"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".OrderActivity"
             android:exported="true" />

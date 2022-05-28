@@ -9,9 +9,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:layout_width="match_parent"
             android:id="@+id/ad1_top_linear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:orientation="vertical">
@@ -187,6 +188,56 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/rpayment_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+
+                    android:background="@drawable/ellipse_border"
+                    android:orientation="vertical">
+
+
+                    <RadioGroup
+                        android:id="@+id/rRadioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+
+                        >
+
+                        <RadioButton
+                            android:id="@+id/rgooglepay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Google Pay"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/rcashpayment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Cash "
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/rpay_later"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Pay Later"
+                            android:textSize="12sp" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
 
 
             </LinearLayout>

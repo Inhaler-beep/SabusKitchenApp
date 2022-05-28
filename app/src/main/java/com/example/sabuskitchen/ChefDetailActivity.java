@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.AbstractThreadedSyncAdapter;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,6 +52,7 @@ public class ChefDetailActivity extends AppCompatActivity {
     private ArrayList<String> items = new ArrayList<>();
     private ArrayList<String> itemswithcomma = new ArrayList<>();
     private Button PreparedButton,ServedButton;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -57,6 +61,7 @@ public class ChefDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chef_detail);
 
         key = getIntent().getExtras().getString("key").toString();
+        mAuth = FirebaseAuth.getInstance();
 
         OrdersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(key).child("Items");
         PrepareRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(key).child("details");
@@ -102,10 +107,12 @@ public class ChefDetailActivity extends AppCompatActivity {
                         String totalamount = snapshot.child("totalamount").getValue().toString();
                         String paymentid = snapshot.child("paymentid").getValue().toString();
                         String date = snapshot.child("date").getValue().toString();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        String empuser = user.getUid();
                         items1.put("datentime",date);
                         items1.put("totalamount",totalamount);
                         items1.put("paymentid",paymentid);
-
+                        items1.put("empid",empuser);
                         CompletedRef.child(key).setValue(items1).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -146,6 +153,9 @@ public class ChefDetailActivity extends AppCompatActivity {
                 for(DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.getKey();
                     String value = ds.getValue().toString();
+
+
+
                     MenuRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {

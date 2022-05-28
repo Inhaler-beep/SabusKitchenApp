@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/report_linear_layout"
@@ -37,27 +37,7 @@
         android:padding="20dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:orientation="horizontal"
-            android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name : "/>
-
-            <TextView
-                android:id="@+id/name_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
 
 
         <LinearLayout
@@ -71,14 +51,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hostel : "/>
+                android:text="Order Id : "/>
 
             <TextView
-                android:id="@+id/hostel_report"
+                android:id="@+id/comp_order_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="hostel"
+                android:text="Order Id"
                 />
         </LinearLayout>
 
@@ -96,7 +76,7 @@
                 android:text="Pay Date: "/>
 
             <TextView
-                android:id="@+id/date_report"
+                android:id="@+id/comp_pay_date_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -116,14 +96,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Plan : "/>
+                android:text="Ordered Items : "/>
 
             <TextView
-                android:id="@+id/mode_report"
+                android:id="@+id/comp_dishes_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Name"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employee : "/>
+
+            <TextView
+                android:id="@+id/comp_emp_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Emp name"
                 />
         </LinearLayout>
 
@@ -141,11 +142,11 @@
                 android:text="Mode of Payment: "/>
 
             <TextView
-                android:id="@+id/paymentmode_report"
+                android:id="@+id/comp_paymentmode_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Name"
+                android:text="UPI"
                 />
         </LinearLayout>
 
@@ -159,26 +160,47 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expiry Date : "/>
+                android:text="Total Amount : "/>
 
             <TextView
-                android:id="@+id/expiry_report"
+                android:id="@+id/comp_amount_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Name"
+                android:text="AMount"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment ID : "/>
+
+            <TextView
+                android:id="@+id/comp_payid_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textIsSelectable="true"
+                android:text="Payment ID"
                 />
         </LinearLayout>
 
-       <Button
-           android:id="@+id/report_ok_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="OK"
-           android:background="@drawable/round_button"
-           android:textColor="@color/white"
-           android:layout_marginTop="30dp"
-           android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/comp_report_ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:background="@drawable/round_button"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>

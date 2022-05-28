@@ -2,7 +2,7 @@ package com.example.sabuskitchen;
 
 public class Orders {
 
-    String date,status,totalamount;
+    String date,status,totalamount,tableid;
 
     public  Orders()
     {
@@ -15,6 +15,7 @@ public class Orders {
                 "totalamount='" + totalamount + '\'' +
                 ", status='" + status + '\'' +
                 ", date='" + date + '\'' +
+                ", tableid='" + tableid + '\'' +
                 '}';
     }
 
@@ -40,5 +41,13 @@ public class Orders {
 
     public void setTotalamount(String totalamount) {
         this.totalamount = totalamount;
+    }
+
+    public String getTableid() {
+        return tableid;
+    }
+
+    public void setTableid(String tableid) {
+        this.tableid = tableid;
     }
 }

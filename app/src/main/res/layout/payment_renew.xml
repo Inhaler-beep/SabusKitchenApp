@@ -51,20 +51,14 @@
             android:layout_gravity="center"
 
             >
-            <RadioButton
-                android:id="@+id/renew_googlepay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Google Pay"
-                android:textSize="12sp"
-                android:padding="5dp"/>
+
 
             <RadioButton
                 android:id="@+id/renew_cashpayment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="Cash "
+                android:text="Paid "
                 android:padding="5dp"/>
 
 

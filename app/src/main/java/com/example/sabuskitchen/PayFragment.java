@@ -36,7 +36,7 @@ public class PayFragment extends DialogFragment
     private ProgressDialog mLoadingBar;
     private String expiry1,name1,hostel1,mode1,payment_mode1,date1;
     private EditText dateInput,nameInput;
-    private String payment_mode = "",userKey;
+    private String payment_mode = "Cash",userKey;
     private TextView amountText;
     private Integer count = 1;
     private AutoCompleteTextView actv;
@@ -60,7 +60,9 @@ public class PayFragment extends DialogFragment
         userKey = duesActivity.getMyData();
         View view = inflater.inflate(R.layout.payment_renew, container, false);
         amountText = (TextView) view.findViewById(R.id.payment_renew_text);
+/*
         RadioButton googlepay = (RadioButton) view.findViewById(R.id.renew_googlepay);
+*/
         RadioButton cashpay = (RadioButton) view.findViewById(R.id.renew_cashpayment);
         Button okButton = (Button) view.findViewById(R.id.ok_Button);
 
@@ -85,11 +87,8 @@ public class PayFragment extends DialogFragment
             @Override
             public void onClick(View v) {
 
-                if(googlepay.isChecked())
-                {
-                    payment_mode = "GooglePay";
-                }
-                else if(cashpay.isChecked())
+
+                if(cashpay.isChecked())
                 {
                     payment_mode = "Cash";
                 }
@@ -100,44 +99,49 @@ public class PayFragment extends DialogFragment
                 }
                 else
                 {
-
-                    HashMap<String,Object> payValue = new HashMap<>();
-                    payValue.put("paymentmode",payment_mode);
-                    dr.child(userKey).updateChildren(payValue).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
-                        {
-                            if(task.isSuccessful())
+                    try {
+                        HashMap<String,Object> payValue = new HashMap<>();
+                        payValue.put("paymentmode",payment_mode);
+                        dr.child(userKey).updateChildren(payValue).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task)
                             {
-                                HashMap<String,String> userMap = new HashMap<>();
-                                userMap.put("name",name1);
-                                userMap.put("phone",hostel1);
-                                userMap.put("date",date1);
-                                userMap.put("mode",mode1);
-                                userMap.put("expiry",expiry1);
-                                userMap.put("paymentmode",payment_mode);
-                                payment.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task)
-                                    {
-                                        if(task.isSuccessful())
+                                if(task.isSuccessful())
+                                {
+                                    HashMap<String,String> userMap = new HashMap<>();
+                                    userMap.put("name",name1);
+                                    userMap.put("phone",hostel1);
+                                    userMap.put("date",date1);
+                                    userMap.put("mode",mode1);
+                                    userMap.put("expiry",expiry1);
+                                    userMap.put("paymentmode",payment_mode);
+                                    payment.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
                                         {
-                                            Toast.makeText(getContext(), "...", Toast.LENGTH_SHORT).show();
+                                            if(task.isSuccessful())
+                                            {
+                                            }
+
                                         }
+                                    });
+                                    Toast.makeText(getContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                                }
 
-                                    }
-                                });
-                                Toast.makeText(getContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
+
                             }
-                            else
-                            {
-                                Toast.makeText(getContext(), "Sorry..Try Again", Toast.LENGTH_SHORT).show();
-                            }
+                        });
+                        getActivity().onBackPressed();
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getContext(), "Exception caught"+e, Toast.LENGTH_SHORT).show();
+                    }
 
-
-                        }
-                    });
-                    getActivity().onBackPressed();
 
                 }
 

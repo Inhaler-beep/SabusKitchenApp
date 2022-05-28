@@ -16,6 +16,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,13 +29,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
 public class MessActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private UserAdapter adapter;
     private DatabaseReference UsersRef;
+    private Button expiredButton;
     private EditText userInput;
     private ProgressDialog progressDialog;
+    private CheckBox expiredCheck;
+    private HashMap<String,Integer> expiryMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +56,25 @@ public class MessActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(MessActivity.this);
         progressDialog.setTitle("Loading Users");
 
-
+        expiredCheck = (CheckBox) findViewById(R.id.expiry_checkbox);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         userInput = (EditText) findViewById(R.id.userInput);
 
-
-
+        expiredCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    LoadExpiredUsers();
+                }
+                else
+                {
+                    LoadUserData("");
+                }
+            }
+        });
 
         userInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,6 +111,8 @@ public class MessActivity extends AppCompatActivity {
 
     }
 
+
+
     private void LoadUserData(String data)
     {
 
@@ -108,6 +132,18 @@ public class MessActivity extends AppCompatActivity {
                        holder.name.setText(model.getName());
                        holder.phone.setText(model.getPhone());
                        progressDialog.dismiss();
+                       String expiry = model.getExpiry();
+                       SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                       Date strDate = null;
+                       try {
+                           strDate = sdf.parse(expiry);
+                       } catch (ParseException e) {
+                           e.printStackTrace();
+                       }
+                       if(System.currentTimeMillis() > strDate.getTime())
+                       {
+                           holder.name.setText(model.getName());
+                       }
                        holder.mView.setOnClickListener(new View.OnClickListener() {
                            @Override
                            public void onClick(View v) {
@@ -157,6 +193,66 @@ public class MessActivity extends AppCompatActivity {
         //adapter.stopListening();
     }
 
+    private void LoadExpiredUsers() {
+        Query query = UsersRef.orderByChild("name");
+
+        FirebaseRecyclerOptions<Users> options =
+                new FirebaseRecyclerOptions.Builder<Users>()
+                        .setQuery(query,Users.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<Users,UserViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Users, UserViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull UserViewHolder holder, int position, @NonNull Users model)
+                    {
+                        final String key = getRef(position).getKey();
+                        holder.name.setText(model.getName());
+                        holder.phone.setText(model.getPhone());
+                        progressDialog.dismiss();
+                        String expiry = model.getExpiry();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                        Date strDate = null;
+                        try {
+                            strDate = sdf.parse(expiry);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        if(System.currentTimeMillis() < strDate.getTime())
+                        {
+                            holder.mView.setVisibility(View.GONE);
+                            holder.mView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+
+                        }
+                        holder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent messuserIntent = new Intent(MessActivity.this,Usermess.class);
+                                messuserIntent.putExtra("userkey",key);
+                                startActivity(messuserIntent);
+
+                            }
+                        });
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext())
+                                .inflate(R.layout.userlayout, parent, false);
+
+                        return new UserViewHolder(view);
+                    }
+                };
+
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+
+    }
     public static class UserViewHolder extends RecyclerView.ViewHolder
     {
         TextView name,phone;

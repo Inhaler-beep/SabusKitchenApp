@@ -40,7 +40,7 @@ public class RenewActivity extends AppCompatActivity implements DatePickerDialog
     private ProgressDialog mLoadingBar;
     private String expiry;
     private EditText dateInput,nameInput;
-    private String mode;
+    private String mode,payment_mode;
     private TextView amountText;
     private Integer count = 1;
     private AutoCompleteTextView actv;
@@ -79,6 +79,29 @@ public class RenewActivity extends AppCompatActivity implements DatePickerDialog
         amountText = (TextView) findViewById(R.id.ramount_text);
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rRadioHroup);
+        RadioGroup radioGroup1 = (RadioGroup) findViewById(R.id.rRadioGroup);
+
+        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                switch (checkedId) {
+                    case R.id.rgooglepay:
+                        payment_mode = "GooglePay";
+                        break;
+
+                    case R.id.rcashpayment:
+                        payment_mode = "Cash";
+                        break;
+
+                    case R.id.rpay_later:
+                        payment_mode = "PayLater";
+                        break;
+
+                }
+
+            }
+        });
 
         dr.addValueEventListener(new ValueEventListener() {
             @Override
@@ -207,6 +230,7 @@ public class RenewActivity extends AppCompatActivity implements DatePickerDialog
             userMap.put("date",date);
             userMap.put("mode",mode);
             userMap.put("expiry",expiry);
+            userMap.put("paymentmode",payment_mode);
 
             dr.child(UserKey).updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

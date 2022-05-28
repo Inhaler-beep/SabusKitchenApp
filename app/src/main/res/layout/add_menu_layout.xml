@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dishname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Username"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@+id/dishname"
+        android:layout_height="1dp"
+        android:background="#E6E6E6"/>
+
+</RelativeLayout>

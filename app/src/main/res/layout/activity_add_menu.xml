@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/scroll_view"
     android:layout_height="match_parent"
-    android:background="#BEFFFFFF"
+    android:background="#37FBFBFB"
     tools:context=".AddMenu">
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BEFFFFFF">
 
 
     <LinearLayout
+        android:id="@+id/order_details_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/order_details_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:drawablePadding="10dp"
+            android:text="Add Menu"
+            android:background="@drawable/round_search"
+            android:fontFamily="@font/montserrat"
+            android:backgroundTint="@color/colorPrimaryVariant"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp" />
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add_menu_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:elevation="8dp"
+        android:layout_below="@id/order_details_linearLayout"
         android:background="@color/white"
         android:gravity="center"
         android:layout_margin="20dp"
@@ -82,10 +118,64 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="Add Menu" />
+            android:text="Add/Update" />
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/etho_view"
+        android:layout_margin="10dp"
+        android:layout_below="@id/add_menu_linear"
+        android:background="#45000000"
+        />
+        <LinearLayout
+            android:id="@+id/addmenu_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etho_view"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
+
+            <EditText
+                android:id="@+id/addmenuInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:drawableLeft="@drawable/ic_person_search"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_search"
+                android:fontFamily="@font/montserrat"
+                android:hint="Search for Dishes"
+                android:backgroundTint="@color/colorPrimaryVariant"
+                android:inputType="textCapWords"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/add_menu_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/addmenu_linearLayout">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/thazhathe_view"
+            android:layout_margin="100dp"
+            android:layout_below="@id/add_menu_recyclerView"
+            android:background="#45000000"
+            />
 
 
 
 </RelativeLayout>
+</ScrollView>

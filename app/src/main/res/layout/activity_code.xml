@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -125,8 +126,10 @@
         android:background="@drawable/round_button"
         android:fontFamily="@font/montserrat"
         android:padding="9dp"
-        android:text="Go to Menu"
+        android:text="Assign Table"
         android:textColor="@color/white" />
+
+
   </LinearLayout>
 
 

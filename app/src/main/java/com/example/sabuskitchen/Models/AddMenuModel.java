@@ -1,12 +1,9 @@
 package com.example.sabuskitchen.Models;
 
-
-
-public class Menu {
-
-    String dishname,price,category,count;
-
-    public Menu(){
+public class AddMenuModel {
+    String dishname,price;
+    public AddMenuModel()
+    {
 
     }
     @Override
@@ -14,11 +11,9 @@ public class Menu {
         return "Users{" +
                 "dishname='" + dishname + '\'' +
                 ", price='" + price + '\'' +
-                ", category='" + category + '\'' +
-                ", count='" + count + '\'' +
+
                 '}';
     }
-
 
     public String getDishname() {
         return dishname;
@@ -34,21 +29,5 @@ public class Menu {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }

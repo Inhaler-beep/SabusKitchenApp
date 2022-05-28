@@ -8,21 +8,39 @@
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_border_red.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_button.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_logout.xml" value="0.26614583333333336" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/round_search.xml" value="0.14322916666666666" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/drawable/roundbutton.xml" value="0.26614583333333336" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_add.xml" value="0.14855072463768115" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_add_emp.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_add_menu.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_chef.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_chef_detail.xml" value="0.264" />
-        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_code.xml" value="0.25" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_code.xml" value="0.12" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_completed_orders.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_dues.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_expired.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_home.xml" value="0.1503623188405797" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_login.xml" value="0.1503623188405797" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_main.xml" value="0.15534420289855072" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_menu.xml" value="0.25" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_mess.xml" value="0.14673913043478262" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_pre_order.xml" value="0.25" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_renew.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_table.xml" value="0.264" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/activity_usermess.xml" value="0.14266304347826086" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/add_menu_layout.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/completed_layout.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/completed_view.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/list_view.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/menu_layout.xml" value="0.152" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/order_detail_single.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/orders_layout.xml" value="0.536" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/payment_renew.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/payments_layout.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/popup_view.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/report_view.xml" value="0.12708333333333333" />
+        <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/tableview.xml" value="0.12708333333333333" />
         <entry key="..\:/Simple-Lockscreen-master/sabuskitchen/app/src/main/res/layout/userlayout.xml" value="0.14673913043478262" />
       </map>
     </option>
